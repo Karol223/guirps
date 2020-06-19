@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<style>
+
+</style>
+<html>
+<head>
+  <title>Rock, Paper, Scissors game</title>
+  <meta charset="UTF-8"/>  
+  Choose rock paper or scissors ! 
+
+<div id ="buttons">
+<button id = "paper">paper</button>
+<button id = "rock">rock</button>
+<button id = "scissors">scissors</button>
+</div>  
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+
+    function game() { 
+      let playerScore = 0; 
+      let computerScore = 0; 
+        function completeRound(){ 
+          function computerPlay () {
+            let cpuRandom = Math.floor(Math.random() * Math.floor(3));
+            let cpuChoice;   
+            switch (cpuRandom){
+              case 0: 
+                cpuChoice = 'rock';
+                break; 
+              case 1: 
+                cpuChoice = 'paper';
+                break; 
+              case 2: 
+                cpuChoice = 'scissors'; 
+            } 
+            return cpuChoice; 
+         }
+        
+        let playerSelection = 0  
+        let computerSelection = computerPlay(); 
+        console.log ("the computer played " + computerSelection);
+        
+        document.getElementById("paper").addEventListener("click",choosePaper);
+        function choosePaper () { 
+          return console.log ("paper"); 
+        }
+        document.getElementById("rock").addEventListener("click",chooseRock);
+        function chooseRock (){ 
+          return console.log ("rock"); 
+        }
+        document.getElementById("scissors").addEventListener("click",chooseScissors);
+        function chooseScissors (){ 
+          return console.log ("scissors"); 
+        }
+
+        function playRound(playerSelection, computerSelection){ 
+        playerSelection = playerSelection.toLowerCase(); 
+        if (playerSelection === computerSelection) { 
+          return "It's a Draw !" } 
+        else if (
+        playerSelection === 'rock' &&
+        computerSelection === 'scissor'
+        ){ 
+        playerScore += 1  
+          return "You Win! Rock beats Scissors"
+        }
+        else if (
+        playerSelection === 'scissors' && 
+        computerSelection === 'paper'
+        ){
+        playerScore +=1   
+          return "You Win! Scissors beats Paper"
+        }
+        else if (
+        playerSelection === 'paper' && 
+        computerSelection === 'rock'
+        ){
+        playerScore +=1   
+          return "You Win! Paper beats Rock"
+        }
+        else if (
+        playerSelection === 'rock' && 
+        computerSelection === 'paper'
+        ){
+        computerScore +=1   
+          return "You Lose! Paper beats Rock"
+        }
+        else if (
+        playerSelection === 'scissors' && 
+        computerSelection === 'rock'
+        ){
+        computerScore +=1   
+          return "You Lose! Rock beats Scissors"
+        }
+        else if (
+        playerSelection === 'rock' && 
+        computerSelection === 'paper'
+        ){
+        computerScore +=1   
+          return "You Lose! Paper beats Rock"
+        }
+        else if (
+        playerSelection === 'paper' && 
+        computerSelection === 'scissors'
+        ){
+        computerScore +=1   
+          return "You Lose! Scissors beats Paper"
+        }
+      }
+    console.log (playRound(playerSelection, computerSelection));
+  }
+      function gameCount() { 
+        for (let i = 1; i <= 3; i++){ 
+          if (playerScore == 2){
+            console.log("You win !")
+            break; 
+          } else if (computerScore == 2){
+            console.log("You lose !")
+            break;
+          }
+          completeRound();
+          console.log (
+            `| round ${i} | Player Score: ${playerScore} | Computer Score: ${computerScore} |`
+          ); 
+          }
+          }
+      
+        gameCount(); 
+        }
+        game()
+      </script>
+</body>
+</html>
